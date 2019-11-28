@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ChooseLevelController">
+   <children>
+      <ImageView fitHeight="456.0" fitWidth="456.0">
+         <image>
+            <Image url="@imgs/levels.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lvl1" fitHeight="58.0" fitWidth="58.0" onMouseClicked="#lvl1Click" onMouseEntered="#lvl1Hover" onMouseExited="#lvl1Leave" translateX="-151.0" translateY="-115.0">
+         <image>
+            <Image url="@imgs/lvl1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lvl2" fitHeight="42.0" fitWidth="42.0" onMouseClicked="#lvl1Click" onMouseEntered="#lvl2Hover" onMouseExited="#lvl2Leave" translateY="-115.0">
+         <image>
+            <Image url="@imgs/lvl2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lvl3" fitHeight="58.0" fitWidth="58.0" onMouseClicked="#lvl1Click" onMouseEntered="#lvl3Hover" onMouseExited="#lvl3Leave" translateX="146.0" translateY="-115.0">
+         <image>
+            <Image url="@imgs/lvl3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lvl4" fitHeight="79.0" fitWidth="79.0" onMouseClicked="#lvl1Click" onMouseEntered="#lvl4Hover" onMouseExited="#lvl4Leave" translateX="-72.0">
+         <image>
+            <Image url="@imgs/lvl4.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lvl5" fitHeight="53.0" fitWidth="53.0" onMouseClicked="#lvl1Click" onMouseEntered="#lvl5Hover" onMouseExited="#lvl5Leave" translateX="70.0">
+         <image>
+            <Image url="@imgs/lvl5.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lvl6" fitHeight="72.0" fitWidth="72.0" onMouseClicked="#lvl1Click" onMouseEntered="#lvl6Hover" onMouseExited="#lvl6Leave" translateX="-151.0" translateY="115.0">
+         <image>
+            <Image url="@imgs/lvl6.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lvl7" fitHeight="52.0" fitWidth="43.0" onMouseClicked="#lvl1Click" onMouseEntered="#lvl7Hover" onMouseExited="#lvl7Leave" translateX="2.0" translateY="117.0">
+         <image>
+            <Image url="@imgs/lvl7.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lvl8" fitHeight="52.0" fitWidth="52.0" onMouseClicked="#lvl1Click" onMouseEntered="#lvl8Hover" onMouseExited="#lvl8Leave" translateX="146.0" translateY="115.0">
+         <image>
+            <Image url="@imgs/lvl8.png" />
+         </image>
+      </ImageView>
+   </children>
+</StackPane>

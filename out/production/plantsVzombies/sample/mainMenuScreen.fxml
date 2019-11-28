@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.mainMenuController">
+   <children>
+      <ImageView fitHeight="505.0" fitWidth="810.0">
+         <image>
+            <Image url="@imgs/PvZ_mainmenu.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="startAdventure" fitHeight="60.0" fitWidth="164.0" onMouseClicked="#StartAdventureClick" onMouseEntered="#startAdventureHover" onMouseExited="#startAdventureLeave" translateY="-85.0">
+         <image>
+            <Image url="@imgs/start%20adventure%20-%20before.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="profileSettings" fitHeight="60.0" fitWidth="164.0" onMouseEntered="#profileSettingsHover" onMouseExited="#profileSettingsLeave" translateY="-25.0">
+         <image>
+            <Image url="@imgs/profile%20settings-before.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="help_options" fitHeight="60.0" fitWidth="164.0" onMouseEntered="#help_optionsHover" onMouseExited="#help_optionsLeave" translateY="35.0">
+         <image>
+            <Image url="@imgs/HelpOptions-before.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exit" fitHeight="60.0" fitWidth="164.0" onMouseClicked="#ExitClick" onMouseEntered="#exitHover" onMouseExited="#exitLeave" translateY="93.0">
+         <image>
+            <Image url="@imgs/Exit-before.png" />
+         </image>
+      </ImageView>
+   </children>
+</StackPane>

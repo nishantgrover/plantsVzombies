@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.promptScreenController">
+   <children>
+      <ImageView fitHeight="432.0" fitWidth="600.0">
+         <image>
+            <Image url="@imgs/LoadorNew.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="newG" fitHeight="53.0" fitWidth="118.0" onMouseClicked="#newGClick" onMouseEntered="#newGHover" onMouseExited="#newGLeave" translateX="-65.0" translateY="90.0">
+         <image>
+            <Image url="@imgs/newGamebtn-before.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="loadG" fitHeight="53.0" fitWidth="118.0" onMouseClicked="#loadGClick" onMouseEntered="#loadGHover" onMouseExited="#loadGLeave" translateX="85.0" translateY="90.0">
+         <image>
+            <Image url="@imgs/loadGamebtn-before.png" />
+         </image>
+      </ImageView>
+   </children>
+</StackPane>

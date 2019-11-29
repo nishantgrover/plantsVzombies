@@ -6,7 +6,6 @@ import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -126,7 +125,6 @@ public class lvl1GameController implements Initializable {
                     int col=1+r.nextInt(9);
                     sunDefault.setFitHeight(suntoken1.getFitHeight());
                     sunDefault.setFitWidth(suntoken1.getFitWidth());
-                    boolean flag=true;
                     int X=5;
                     backyardGrid.add(sunDefault,col,0);
                     sunDefault.setOnMouseClicked((Event e)-> {
@@ -136,9 +134,6 @@ public class lvl1GameController implements Initializable {
                     });
                     timeline.getKeyFrames().addAll(new KeyFrame(Duration.ZERO, new KeyValue(sunDefault.translateYProperty(),0)), new KeyFrame(Duration.seconds(X), new KeyValue(sunDefault.translateYProperty(),150 + r.nextInt(200))));
                     timeline.play();
-//                    if(!flag) {
-//                        timeline.stop();
-//                    }
                 });
             }
         }, 0, 10000);
@@ -250,40 +245,6 @@ public class lvl1GameController implements Initializable {
     public ImageView suntoken1;
     @FXML
     public ImageView suntoken2;
-
-    @FXML
-    public void suntoken1move(){
-
-        TranslateTransition t = new TranslateTransition();
-        System.out.print(suntoken1.getX());
-//        suntoken1.setY(700);
-        suntoken1.setX(200);
-        suntoken1.setOpacity(1);
-        t.setByY(200);
-        t.setDuration(Duration.millis(8000));
-        t.setNode(suntoken1);
-        t.setCycleCount(10);
-        t.play();
-
-    }
-    @FXML
-    public void suntoken2move(){
-        TranslateTransition t = new TranslateTransition();
-        t.setByY(200);
-        t.setDuration(Duration.millis(13000));
-        t.setNode(suntoken2);
-        t.play();
-    }
-    @FXML
-    public void suntoken1Click(){
-        suntoken1.setOpacity(0);
-        suntoken1=null;
-        sunTokenCounter.setText(Integer.toString(Integer.parseInt(sunTokenCounter.getText())+25));
-    }
-    @FXML
-    public void suntoken2Click(){
-        suntoken2.setOpacity(0);
-    }
     @FXML
     public void setOnGrid(MouseEvent m){
         StackPane s = (StackPane) m.getSource();

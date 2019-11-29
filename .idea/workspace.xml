@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/lvl1GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/lvl1GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/lvl1GameScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/lvl1GameScreen.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,7 +194,7 @@
       <workItem from="1572647229936" duration="41175000" />
       <workItem from="1573039041285" duration="411000" />
       <workItem from="1574670290864" duration="26791000" />
-      <workItem from="1575019249190" duration="16615000" />
+      <workItem from="1575019249190" duration="18077000" />
     </task>
     <servers />
   </component>

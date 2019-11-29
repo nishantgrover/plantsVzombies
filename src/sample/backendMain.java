@@ -1,0 +1,717 @@
+package sample;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+interface damagable{
+    public void damaged(double value);
+}
+interface attacker{
+    public double attack();
+}
+class HitException extends Exception{
+
+}
+class PLacePlantException extends Exception{
+
+}
+class GraveHereException extends Exception{
+
+}
+class DieException extends Exception{
+
+}
+class ShovelRemoveException extends Exception{
+
+}
+class Player implements Comparable<Player>, Serializable{
+
+    private String username;
+    private final int unique_key;
+    private double coins;
+    private static int age;
+    private long zombieskilled;
+    private int level;
+    private int rank;
+    private int XP;
+    private final ArrayList<Plant> unlockedPlants;
+
+    public Player(String username, int unique_key, double coins, int age, long zombieskilled, int level, int rank,
+                  int xP) {
+        super();
+        this.username = username;
+        this.unique_key = unique_key;
+        this.coins = coins;
+        this.age = age;
+        this.zombieskilled = zombieskilled;
+        this.level = level;
+        this.rank = rank;
+        XP = xP;
+        this.unlockedPlants = new ArrayList<Plant>();
+    }
+    @Override
+    public int compareTo(Player p)
+    {
+        return this.rank - p.rank;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public int getUnique_key() {
+        return unique_key;
+    }
+    public double getCoins() {
+        return coins;
+    }
+    public long getZombieskilled() {
+        return zombieskilled;
+    }
+    public int getLevel() {
+        return level;
+    }
+    public int getRank() {
+        return rank;
+    }
+    public int getXP() {
+        return XP;
+    }
+    public ArrayList<Plant> getUnlockedPlants() {
+        return unlockedPlants;
+    }
+    public void addCoins(double value) {
+
+    }
+    public void addZombieskilled(long value) {
+
+    }
+    public void levelUp() {
+
+    }
+    public void addXP(int value) {
+
+    }
+    public void updateRank() {
+
+    }
+    public void setUnlockedPlants(Plant p) {
+
+    }
+}
+
+abstract class Plant implements damagable, Serializable{
+    private final int myType;
+    private double HP;
+    private final int waitingTime;
+    private final double cost;
+    private double maxHP;
+    private String name;
+    private final int availableAtlevel;
+    private final String myAbility;
+    public Plant(int availableAtlevel, int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super();
+        this.myType = myType;
+        HP = hP;
+        this.waitingTime = waitingTime;
+        this.cost = cost;
+        this.myAbility = myAbility;
+        this.maxHP = maxHP;
+        this.name = name;
+        this.availableAtlevel=availableAtlevel;
+    }
+
+    public int getAvailableAtlevel() {
+        return availableAtlevel;
+    }
+
+    public double getMaxHP() {
+        return maxHP;
+    }
+    public void setMaxHP(double maxHP) {
+        this.maxHP = maxHP;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getMyType() {
+        return myType;
+    }
+    public double getHP() {
+        return HP;
+    }
+    public int getWaitingTime() {
+        return waitingTime;
+    }
+    public double getCost() {
+        return cost;
+    }
+    public String getMyAbility() {
+        return myAbility;
+    }
+    @Override
+    public String toString() {
+        return "";
+    }
+    @Override
+    public void damaged(double value) {
+
+    }
+    abstract public void specialAbility();
+}
+
+abstract class Zombie implements damagable, attacker, Serializable{
+    private double HP;
+    private final double maxHP;
+    private final String toughness;
+    private final float speed;
+    private int damageAbsorption;
+    private final int myGrunt;
+    private final double atkpwr;
+    public Zombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
+                  double atkpwr) {
+        super();
+        HP = hP;
+        this.maxHP = maxHP;
+        this.toughness = toughness;
+        this.speed = speed;
+        this.damageAbsorption = damageAbsorption;
+        this.myGrunt = myGrunt;
+        this.atkpwr = atkpwr;
+    }
+
+    @Override
+    public void damaged(double value) {
+
+    }
+    @Override
+    public String toString() {
+        return "";
+    }
+    abstract public void ability();
+    @Override
+    public double attack() {
+        return 1;
+    }
+
+    public double getHP() {
+        return HP;
+    }
+
+    public double getMaxHP() {
+        return maxHP;
+    }
+
+    public String getToughness() {
+        return toughness;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public int getDamageAbsorption() {
+        return damageAbsorption;
+    }
+
+    public int getMyGrunt() {
+        return myGrunt;
+    }
+
+    public double getAtkpwr() {
+        return atkpwr;
+    }
+
+}
+
+class BasicZombie extends Zombie implements Serializable{
+
+    public BasicZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
+                       double atkpwr) {
+        super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public void ability() {
+
+    }
+
+}
+
+class BucketHeadZombie extends Zombie implements Serializable{
+
+    public BucketHeadZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
+                            double atkpwr) {
+        super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public void ability() {
+
+    }
+
+}
+class ConeHeadZombie extends Zombie implements Serializable{
+
+    public ConeHeadZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
+                          double atkpwr) {
+        super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public void ability() {
+
+    }
+
+}
+class FlagZombie extends Zombie implements Serializable{
+
+    public FlagZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
+                      double atkpwr) {
+        super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public void ability() {
+
+    }
+
+}
+class PoleVaultingZombie extends Zombie implements Serializable{
+
+    public PoleVaultingZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
+                              double atkpwr) {
+        super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public void ability() {
+
+    }
+
+}
+
+abstract class Shooter extends Plant implements attacker, Serializable{
+    private int range;
+    private Pea shot;
+    private final ArrayList<Pea> shots;
+
+    public Shooter(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name,
+                   int range) {
+        super(myType, range, hP, waitingTime, cost, myAbility, maxHP, name);
+        this.range = range;
+        this.shot = new Pea(1);
+        this.shots = new ArrayList<Pea>();
+    }
+    @Override
+    public String toString() {
+        return "";
+    }
+    @Override
+    public double attack() {
+        return 1;
+    }
+    abstract public void shoot();
+    private class Pea implements Cloneable, Serializable{
+        private int myType;
+        private final double power;
+        public Pea(int myType) {
+            super();
+            this.myType = myType;
+            this.power=0;
+        }
+        public int getMyType() {
+            return myType;
+        }
+        public double getPower() {
+            return power;
+        }
+        @Override
+        public Object clone() {
+            return myType;
+
+        }
+    }
+}
+class Peashooter extends Shooter implements Serializable{
+    private static double cost;
+    private static final int availableAtlevel=0;
+    private static final String myAbility="";
+    public Peashooter(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name,
+                      int range) {
+        super(myType, hP, waitingTime, cost, myAbility, maxHP, name, range);
+    }
+
+    @Override
+    public void specialAbility() {
+
+    }
+
+    @Override
+    public void shoot() {
+        // TODO Auto-generated method stub
+
+    }
+
+    public static String getMyability() {
+        return myAbility;
+    }
+
+}
+class Repeater extends Shooter implements Serializable{
+    private static double cost;
+    private static final int availableAtlevel=0;
+    private static final String myAbility="";
+    public Repeater(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name,
+                    int range) {
+        super(myType, hP, waitingTime, cost, myAbility, maxHP, name, range);
+    }
+
+    @Override
+    public void specialAbility() {
+
+    }
+
+    @Override
+    public void shoot() {
+        // TODO Auto-generated method stub
+
+    }
+
+}
+class Threepeater extends Shooter implements Serializable{
+    private static double cost;
+    private static final int availableAtlevel=0;
+    private static final String myAbility="";
+    public Threepeater(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name,
+                       int range) {
+        super(myType, hP, waitingTime, cost, myAbility, maxHP, name, range);
+    }
+
+    @Override
+    public void specialAbility() {
+
+    }
+
+    @Override
+    public void shoot() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+}
+abstract class Builder extends Plant implements attacker, Serializable{
+
+    public Builder(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super(myType, waitingTime, hP, waitingTime, cost, myAbility, maxHP, name);
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+    @Override
+    public void specialAbility() {
+
+    }
+
+}
+class Wallnut extends Builder implements Serializable{
+    private static double cost;
+    private static final int availableAtlevel=0;
+    private static final String myAbility="";
+    public Wallnut(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super(myType, hP, waitingTime, cost, myAbility, maxHP, name);
+    }
+
+    @Override
+    public double attack() {
+        return 0;
+    }
+
+}
+class Tallnut extends Builder implements Serializable{
+    private static double cost;
+    private static final int availableAtlevel=0;
+    private static final String myAbility="";
+    public Tallnut(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super(myType, hP, waitingTime, cost, myAbility, maxHP, name);
+    }
+
+    @Override
+    public double attack() {
+        return 0;
+    }
+
+}
+abstract class SunTokenProducer extends Plant implements attacker, Serializable{
+
+    public SunTokenProducer(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super(myType, waitingTime, hP, waitingTime, cost, myAbility, maxHP, name);
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+    @Override
+    public void specialAbility() {
+
+    }
+
+}
+class Sunflower extends SunTokenProducer implements Serializable{
+    private static double cost;
+    private static final int availableAtlevel=0;
+    private static final String myAbility="";
+    public Sunflower(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super(myType, hP, waitingTime, cost, myAbility, maxHP, name);
+    }
+
+    @Override
+    public double attack() {
+        return 0;
+    }
+}
+class Sunshroom extends SunTokenProducer implements Serializable{
+    private static double cost;
+    private static final int availableAtlevel=0;
+    private static final String myAbility="";
+    public Sunshroom(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super(myType, hP, waitingTime, cost, myAbility, maxHP, name);
+    }
+
+    @Override
+    public double attack() {
+        return 0;
+    }
+}
+abstract class BombPlants extends Plant implements attacker, Serializable{
+
+    public BombPlants(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super(myType, waitingTime, hP, waitingTime, cost, myAbility, maxHP, name);
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+    @Override
+    public void specialAbility() {
+
+    }
+
+}
+class CherryBomb extends BombPlants implements Serializable{
+    private static double cost;
+    private static final int availableAtlevel=0;
+    private static final String myAbility="";
+    public CherryBomb(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
+        super(myType, hP, waitingTime, cost, myAbility, maxHP, name);
+    }
+
+    @Override
+    public double attack() {
+        return 0;
+    }
+}
+class LawnMower implements Serializable{
+    private boolean isAvailable;
+    private Lane myLane;
+    LawnMower(Lane myLane){
+        this.isAvailable=true;
+        this.myLane=null;
+    }
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+    public void specialpwr() {
+
+    }
+
+}
+class Lane implements Serializable{
+    Tile[] tiles;
+    LawnMower lane_lawnmower;
+    Lane(){
+        tiles=new Tile[9];
+        lane_lawnmower=new LawnMower(this);
+    }
+}
+class Tile implements Serializable{
+    private boolean isAvailable;
+    private Plant placed;
+
+    Tile(){
+        this.isAvailable=true;
+        this.placed=null;
+    }
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+    public void setAvailable(boolean x) {
+        this.isAvailable=x;
+    }
+}
+class Grave extends Tile implements Serializable{
+    Grave(){
+        super();
+        this.setAvailable(false);
+    }
+}
+class Lawn implements Serializable{
+    Lane[] lanes;
+    Lawn(){
+        lanes=new Lane[5];
+    }
+}
+class Shovel implements Serializable{
+    public void useShovel() {
+
+    }
+}
+class SubGame implements Serializable{
+    private final int level;
+    private final Plant[] plantsSelected;
+    private Shovel shovel;
+    private int sunPoints;
+    private Lawn lawn;
+    private String WeatherType;
+    private final Zombie[] zombies;
+    SubGame(int level) {
+        this.plantsSelected=new Plant[6];
+        this.level=level;
+        this.zombies=new Zombie[4*level];
+    }
+    public void playGame() {
+
+    }
+    public void menu() {
+
+    }
+    public void saveGame() {
+
+    }
+    public void loadGame() {
+
+    }
+}
+class Game implements Serializable{
+    private ArrayList<SubGame> subgames;
+    private int weatherChoice;
+    private ArrayList<Player> users;
+    private Player CurrentUser;
+    private boolean isSaved;
+    private SubGame CurrentSubGame;
+    private int availableLevels;
+    private int volume;
+    private static int userKeyHandler;
+    public void serialize() {
+
+    }
+    public void deserialize() {
+
+    }
+    public Game(ArrayList<SubGame> subgames, int weatherChoice, ArrayList<Player> users, Player currentUser,
+                boolean isSaved, SubGame currentSubGame) {
+        super();
+        this.subgames = subgames;
+        this.weatherChoice = weatherChoice;
+        this.users = users;
+        CurrentUser = currentUser;
+        this.isSaved = isSaved;
+        CurrentSubGame = currentSubGame;
+        playGame();
+    }
+    public void selectLevel() {
+
+    }
+    public void playGame() {
+        this.selectLevel();
+    }
+    public void saveGame() {
+
+    }
+    public void chooseUser() {
+
+    }
+    public void showLeaderboard() {
+
+    }
+    public void showAchievements() {
+
+    }
+    public void loadGame() {
+    }
+    public void exitGame() {
+    }
+    public void Login() {
+
+    }
+    public void Register() {
+
+    }
+    public void CreateNewUser() {
+
+    }
+}
+public class backendMain implements Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private static Game g;
+    public void serialize() {
+
+    }
+    public void deserialize() {
+
+    }
+    public static void main(String[] args) {
+        g=new Game(null, 0, null, null, false, null);
+        g.playGame();
+    }
+}

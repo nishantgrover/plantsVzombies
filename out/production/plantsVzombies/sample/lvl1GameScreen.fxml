@@ -158,12 +158,7 @@
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="8" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="8" />
             <StackPane onMouseClicked="#setOnGrid" onMouseDragReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ImageView fx:id="suntoken2" fitHeight="31.0" fitWidth="35.0" onMouseClicked="#suntoken2Click" GridPane.columnIndex="4">
-               <image>
-                  <Image url="@imgs/sun.gif" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="suntoken1" fitHeight="31.0" fitWidth="35.0" onMouseClicked="#suntoken1Click" GridPane.columnIndex="7">
+            <ImageView fx:id="suntoken1" fitHeight="31.0" fitWidth="35.0" GridPane.columnIndex="7">
                <image>
                   <Image url="@imgs/sun.gif" />
                </image>

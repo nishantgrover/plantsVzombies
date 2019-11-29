@@ -1,18 +1,23 @@
 package sample;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.*;
 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
@@ -22,11 +27,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class lvl1GameController implements Initializable {
     private static int x=0;
     @FXML
     public ImageView peashooter;
+    @FXML
+    public GridPane backyardGrid = new GridPane();
     @FXML
     public Rectangle r_sunflower;
     @FXML
@@ -103,29 +113,42 @@ public class lvl1GameController implements Initializable {
         moveZombie(z2);
         moveZombie(z3);
         movePBar();
-//        try {
-//            Thread.sleep(4000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(suntoken1.getX()+" "+suntoken1.getLayoutX());
-        suntoken1move();
-
-//        try {
-//            Thread.sleep(4000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        suntoken2move();
-
-
+        backyardGrid.toFront();
+        menu.toFront();
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(()->{
+                    Timeline timeline=new Timeline();
+                    ImageView sunDefault = new ImageView(new Image("sample/imgs/sun.gif"));
+                    Random r= new Random();
+                    int col=1+r.nextInt(9);
+                    sunDefault.setFitHeight(suntoken1.getFitHeight());
+                    sunDefault.setFitWidth(suntoken1.getFitWidth());
+                    boolean flag=true;
+                    int X=5;
+                    backyardGrid.add(sunDefault,col,0);
+                    sunDefault.setOnMouseClicked((Event e)-> {
+                        sunDefault.setOpacity(0);
+                        backyardGrid.getChildren().remove(sunDefault);
+                        sunTokenCounter.setText(Integer.toString(Integer.parseInt(sunTokenCounter.getText())+25));
+                    });
+                    timeline.getKeyFrames().addAll(new KeyFrame(Duration.ZERO, new KeyValue(sunDefault.translateYProperty(),0)), new KeyFrame(Duration.seconds(X), new KeyValue(sunDefault.translateYProperty(),150 + r.nextInt(200))));
+                    timeline.play();
+//                    if(!flag) {
+//                        timeline.stop();
+//                    }
+                });
+            }
+        }, 0, 10000);
     }
 
     public void moveZombie(ImageView Z){
         TranslateTransition t = new TranslateTransition();
         t.setByX(-400);
         t.setDuration(Duration.millis(65000));
-        t.setNode((Node) Z);
+        t.setNode(Z);
         t.play();
 
     }
@@ -133,7 +156,7 @@ public class lvl1GameController implements Initializable {
         TranslateTransition t = new TranslateTransition();
         t.setByX(-123);
         t.setDuration(Duration.millis(68000));
-        t.setNode((Node) pbar);
+        t.setNode(pbar);
         t.play();
     }
     public Image pea=new Image("sample/imgs/Pea.png");
@@ -168,7 +191,7 @@ public class lvl1GameController implements Initializable {
         TranslateTransition t = new TranslateTransition();
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
-        t.setNode((Node) lawn_mower1);
+        t.setNode(lawn_mower1);
         t.play();
     }
     @FXML
@@ -176,7 +199,7 @@ public class lvl1GameController implements Initializable {
         TranslateTransition t = new TranslateTransition();
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
-        t.setNode((Node) lawn_mower2);
+        t.setNode(lawn_mower2);
         t.play();
     }
     @FXML
@@ -184,7 +207,7 @@ public class lvl1GameController implements Initializable {
         TranslateTransition t = new TranslateTransition();
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
-        t.setNode((Node) lawn_mower3);
+        t.setNode(lawn_mower3);
         t.play();
         int i=0;
         while(i<1000){
@@ -202,7 +225,7 @@ public class lvl1GameController implements Initializable {
         TranslateTransition t = new TranslateTransition();
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
-        t.setNode((Node) lawn_mower4);
+        t.setNode(lawn_mower4);
         t.play();
         int i=0;
         while(i<1000){
@@ -220,15 +243,17 @@ public class lvl1GameController implements Initializable {
         TranslateTransition t = new TranslateTransition();
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
-        t.setNode((Node) lawn_mower5);
+        t.setNode(lawn_mower5);
         t.play();
     }
     @FXML
     public ImageView suntoken1;
     @FXML
     public ImageView suntoken2;
+
     @FXML
     public void suntoken1move(){
+
         TranslateTransition t = new TranslateTransition();
         System.out.print(suntoken1.getX());
 //        suntoken1.setY(700);
@@ -236,7 +261,8 @@ public class lvl1GameController implements Initializable {
         suntoken1.setOpacity(1);
         t.setByY(200);
         t.setDuration(Duration.millis(8000));
-        t.setNode((Node) suntoken1);
+        t.setNode(suntoken1);
+        t.setCycleCount(10);
         t.play();
 
     }
@@ -245,7 +271,7 @@ public class lvl1GameController implements Initializable {
         TranslateTransition t = new TranslateTransition();
         t.setByY(200);
         t.setDuration(Duration.millis(13000));
-        t.setNode((Node) suntoken2);
+        t.setNode(suntoken2);
         t.play();
     }
     @FXML
@@ -292,11 +318,9 @@ public class lvl1GameController implements Initializable {
         TranslateTransition t = new TranslateTransition();
         t.setByX(600);
         t.setDuration(Duration.millis(2000));
-        t.setNode((Node) pea);
+        t.setNode(pea);
         t.setCycleCount(Timeline.INDEFINITE);
         t.play();
 
     }
-
-
 }

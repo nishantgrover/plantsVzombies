@@ -18,7 +18,7 @@
             <Image url="@imgs/backyard.png" />
          </image>
       </ImageView>
-      <GridPane layoutX="180.0" layoutY="112.0" translateX="-9.0" translateY="-1.0">
+      <GridPane fx:id="backyardGrid" layoutX="180.0" layoutY="-70.0" translateX="-9.0" translateY="-1.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.39996337890625" minWidth="10.0" prefWidth="63.73334655761718" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.39996337890625" minWidth="10.0" prefWidth="34.400000000000006" />
@@ -38,6 +38,10 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="35.0" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
@@ -45,7 +49,7 @@
             <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
                   <ImageView fx:id="lawn_mower1" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower1Click">
                      <image>
@@ -53,14 +57,14 @@
                      </image>
                   </ImageView>
                </children></StackPane>
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" />
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" />
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" />
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" />
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" />
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" />
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="5">
                <children>
                   <ImageView fx:id="lawn_mower2" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower2Click">
                      <image>
@@ -68,15 +72,15 @@
                      </image>
                   </ImageView>
                </children></StackPane>
-            <StackPane onMouseClicked="#setOnGrid" onMouseDragReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <StackPane onMouseClicked="#setOnGrid" onMouseDragReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <StackPane onMouseClicked="#setOnGrid" onMouseDragReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <StackPane onMouseClicked="#setOnGrid" onMouseDragReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="6">
                <children>
                   <ImageView fx:id="lawn_mower3" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower3Click">
                      <image>
@@ -84,15 +88,15 @@
                      </image>
                   </ImageView>
                </children></StackPane>
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="2" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="7">
                <children>
                   <ImageView fx:id="lawn_mower4" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower4Click">
                      <image>
@@ -100,18 +104,18 @@
                      </image>
                   </ImageView>
                </children></StackPane>
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="3" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="4">
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="8">
                <children>
                   <ImageView fx:id="lawn_mower5" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower5Click">
                      <image>
@@ -119,71 +123,51 @@
                      </image>
                   </ImageView>
                </children></StackPane>
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="4" />
-            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <StackPane GridPane.columnIndex="11" GridPane.rowIndex="2">
-               <children>
-                  <ImageView fx:id="z2" fitHeight="59.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@imgs/normal_zombie.gif" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="10" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="11" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="12" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="1">
-               <children>
-                  <ImageView fx:id="z1" fitHeight="67.0" fitWidth="38.0">
-                     <image>
-                        <Image url="@imgs/Conehead_Zombie.gif" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="2" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="3" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="3" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="3">
-               <children>
-                  <ImageView fx:id="z3" fitHeight="59.0" fitWidth="36.0">
-                     <image>
-                        <Image url="@imgs/normal_zombie.gif" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="3" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="3" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="3" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="4" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="4" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="4" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="4" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="4" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="4" />
-            <StackPane onMouseClicked="#setOnGrid" onMouseDragReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="8" />
+            <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ImageView fx:id="z1" fitHeight="67.0" fitWidth="38.0" GridPane.columnIndex="11" GridPane.rowIndex="5">
+               <image>
+                  <Image url="@imgs/Conehead_Zombie.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="z2" fitHeight="59.0" fitWidth="35.0" GridPane.columnIndex="11" GridPane.rowIndex="6">
+               <image>
+                  <Image url="@imgs/normal_zombie.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="z3" fitHeight="59.0" fitWidth="36.0" GridPane.columnIndex="11" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@imgs/normal_zombie.gif" />
+               </image>
+            </ImageView>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="8" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="8" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="8" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="8" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="8" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="8" />
+            <StackPane onMouseClicked="#setOnGrid" onMouseDragReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ImageView fx:id="suntoken2" fitHeight="31.0" fitWidth="35.0" onMouseClicked="#suntoken2Click" GridPane.columnIndex="4">
+               <image>
+                  <Image url="@imgs/sun.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="suntoken1" fitHeight="31.0" fitWidth="35.0" onMouseClicked="#suntoken1Click" GridPane.columnIndex="7">
+               <image>
+                  <Image url="@imgs/sun.gif" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
       <ImageView fitHeight="394.0" fitWidth="131.0" layoutX="15.0" opacity="0.87">
@@ -253,16 +237,6 @@
       <ImageView fitHeight="38.0" fitWidth="35.0" layoutX="386.0" layoutY="342.0" onMouseClicked="#shovelClick">
          <image>
             <Image url="@imgs/shovel.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="suntoken1" fitHeight="31.0" fitWidth="35.0" layoutX="274.0" layoutY="-62.0" onMouseClicked="#suntoken1Click">
-         <image>
-            <Image url="@imgs/sun.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="suntoken2" fitHeight="31.0" fitWidth="35.0" layoutX="386.0" layoutY="-40.0" onMouseClicked="#suntoken2Click">
-         <image>
-            <Image url="@imgs/sun.gif" />
          </image>
       </ImageView>
    </children>

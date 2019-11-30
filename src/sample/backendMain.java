@@ -233,6 +233,9 @@ class Zombie extends Creature implements damagable, Serializable{
     public static ArrayList<Zombie> getAllZombies(){
         return allZombies;
     }
+    public void setHP(double HP){
+        this.HP=HP;
+    }
     public static void addZombie(Zombie z){
         allZombies.add(z);
     }
@@ -328,12 +331,12 @@ class BasicZombie extends Zombie implements Serializable{
 
 }
 
-class BucketHeadZombie extends Zombie implements Serializable{
+class FootballZombie extends Zombie implements Serializable{
 
-    public BucketHeadZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
+    public FootballZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
                             double atkpwr) {
         super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
-
+        this.setImage("sample/imgs/zombie_football.gif");
     }
 
 
@@ -381,11 +384,12 @@ class ConeHeadZombie extends Zombie implements Serializable{
     }
 
 }
-class FlagZombie extends Zombie implements Serializable{
+class SkateZombie extends Zombie implements Serializable{
 
-    public FlagZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
+    public SkateZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
                       double atkpwr) {
         super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
+        this.setImage("sample/imgs/skatingZombie.png");
     }
 
     private static final long serialVersionUID = 1L;
@@ -453,25 +457,42 @@ abstract class Shooter extends Plant implements attacker, Serializable{
         return 1;
     }
     abstract public void shoot();
-    private class Pea implements Cloneable, Serializable{
-        private int myType;
-        private final double power;
-        public Pea(int myType) {
-            super();
-            this.myType = myType;
-            this.power=0;
-        }
-        public int getMyType() {
-            return myType;
-        }
-        public double getPower() {
-            return power;
-        }
-        @Override
-        public Object clone() {
-            return myType;
 
-        }
+}
+class Pea implements Cloneable, Serializable{
+    private int myType;
+    private final double power;
+    private boolean flag;
+    private ImageView myImage;
+    public Pea(int myType) {
+        super();
+        this.flag=true;
+        this.myType = myType;
+        this.power=10;
+        this.myImage=new ImageView(new Image("sample/imgs/Pea.png"));
+    }
+    public ImageView getMyImage(){
+        return myImage;
+    }
+    public void setMyImage(ImageView myImage){
+        this.myImage=myImage;
+    }
+    public int getMyType() {
+        return myType;
+    }
+    public double getPower() {
+        return power;
+    }
+    public void setFlag(boolean flag){
+        this.flag=flag;
+    }
+    public boolean getFlag(){
+        return flag;
+    }
+    @Override
+    public Object clone() {
+        return myType;
+
     }
 }
 class Peashooter extends Shooter implements Serializable{
@@ -731,16 +752,13 @@ class ZombieFactory extends CreatureFactory{
             return new BasicZombie(100,100,"low",1,35,1,15);
         }
         else if(need.equals("2")){
-            return new ConeHeadZombie(150,150,"medium",1.5f,30,2,20);
+            return new ConeHeadZombie(150,150,"medium",1.2f,30,2,20);
         }
         else if(need.equals("3")){
-            return new BucketHeadZombie(200,200,"medium",1.5f,30,3,25);
+            return new FootballZombie(200,200,"medium",1.5f,30,3,25);
         }
         else if(need.equals("4")){
-            return new FlagZombie(250,250,"high",2f,25,4,30);
-        }
-        else if(need.equals("5")){
-            return new PoleVaultingZombie(250,250,"high",2.5f,25,5,30);
+            return new SkateZombie(250,250,"high",1.8f,25,4,30);
         }
         return null;
     }

@@ -5,6 +5,8 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -28,10 +30,7 @@ import sun.reflect.generics.scope.DummyScope;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
-import java.util.Random;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 import static sample.Zombie.*;
 
@@ -58,26 +57,35 @@ public class lvl1GameController implements Initializable {
     public ImageView z3;
     @FXML
     public TextField sunTokenCounter;
+    public ArrayList<Zombie> levelZombies = new ArrayList<>();
     @FXML
     public void placeZombies(int n){
-            int RnG = 1 + new Random().nextInt(2);
+            int RnG = 1 + new Random().nextInt(4);
             Zombie madeZombie = new Zombie();
             String selectZombie = new Integer(RnG).toString();
             madeZombie = (Zombie) ZombieFactory.getInstance().createCreature(selectZombie);
             int row = new Random().nextInt(5) + 4;
             int col = 12;
+        System.out.println("Rng: "+RnG);
             madeZombie.resetXY();
+            levelZombies.add(madeZombie);
             Zombie.getAllZombies().add(madeZombie);
             if (selectZombie.equals("1")) {
                 madeZombie.getMyImage().setFitWidth(z2.getFitWidth());
                 madeZombie.getMyImage().setFitHeight(z2.getFitHeight());
             }
-            else if (selectZombie.equals("2")) {
+            else {
                 madeZombie.getMyImage().setFitWidth(z1.getFitWidth());
                 madeZombie.getMyImage().setFitHeight(z1.getFitHeight());
             }
+            if(RnG==3){
+                madeZombie.getMyImage().setFitHeight(madeZombie.getMyImage().getFitHeight() - 10);
+            }
+            if(RnG==4){
+                madeZombie.getMyImage().setFitHeight(madeZombie.getMyImage().getFitHeight() - 10);
+            }
             backyardGrid.add(madeZombie.getMyImage(), col, row);
-            moveZombie(madeZombie.getMyImage());
+            moveZombie(madeZombie);
     }
     @FXML
     public void peashooterClick(){
@@ -131,12 +139,48 @@ public class lvl1GameController implements Initializable {
     }
     @FXML
     private ImageView pbar;
+    public void addStackPanes(){
+        for(int i=4; i<=8;i++){
+            for(int j=1;j<=9;j++){
+                StackPane cell = new StackPane();
+                backyardGrid.add(cell,j,i);
+                final int row = i;
+                final int col = j;
+                cell.setOnMouseClicked(event -> {
+                        StackPane s = (StackPane) event.getSource();
+                    System.out.println("dsabjdkas");
+                        if(x>=1 && x<=2 && s.getChildren().isEmpty()){
+                            ImageView i1;
+                            switch(x){
+                                case 2: i1=new ImageView(new Image("sample/imgs/pea_shooter.gif"));
+                                    i1.setFitHeight(40);
+                                    i1.setFitWidth(30);
+                                    s.getChildren().add(i1);
+                                    s.toFront();
+                                    i1.toFront();
+//                                    s.toFront();
+                                    shootPea(col,row);
+                                    System.out.println("PLaced");
+                                    break;
+                                case 1: i1=new ImageView(new Image("sample/imgs/sun_flower.gif"));
+                                    i1.setFitHeight(40);
+                                    i1.setFitWidth(30);
+                                    s.getChildren().add(i1);
+                                    break;
 
+                            }
+                        }
+                        else if(x==5 && !(cell.getChildren().isEmpty())){
+                            s.getChildren().removeAll();
+                        }
+
+                });
+            }
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        moveZombie(z1);
-        moveZombie(z2);
-        moveZombie(z3);
+        addStackPanes();
         movePBar();
         backyardGrid.toFront();
         menu.toFront();
@@ -168,15 +212,15 @@ public class lvl1GameController implements Initializable {
         t1.play();
     }
 
-    public void moveZombie(ImageView Z){
+    public void moveZombie(Zombie Z){
         TranslateTransition t = new TranslateTransition();
-
         t.setByX(-425);
-        t.setDuration(Duration.millis(5000));
-        t.setNode(Z);
+        t.setDuration(Duration.millis(35000/Z.getSpeed()));
+        t.setNode(Z.getMyImage());
         t.play();
 
     }
+
     public void movePBar(){
         TranslateTransition t = new TranslateTransition();
         t.setByX(-123);
@@ -273,41 +317,47 @@ public class lvl1GameController implements Initializable {
     }
     @FXML
     public ImageView suntoken1;
-    @FXML
-    public void setOnGrid(MouseEvent m){
-        StackPane s = (StackPane) m.getSource();
-        ImageView i;
-        if(x>=1 && x<=2 && s.getChildren().isEmpty()){
-            switch(x){
-                case 2: i=new ImageView(new Image("sample/imgs/pea_shooter.gif"));
-                        i.setFitHeight(40);
-                        i.setFitWidth(30);
-                        s.getChildren().add(i);
 
-                        ImageView shoot=new ImageView(pea);
-                        s.getChildren().add(shoot);
-                        shoot.toBack();
-                        shoot_the_pea(shoot);
-
-                        break;
-                case 1: i=new ImageView(new Image("sample/imgs/sun_flower.gif"));
-                        i.setFitHeight(40);
-                        i.setFitWidth(30);
-                        s.getChildren().add(i);
-                        break;
-
-            }
-        }
-        else if(x==5 && !(s.getChildren().isEmpty())){
-            s.getChildren().removeAll();
-        }
+    public void shootPea(int col, int row){
+        Timeline shootPeatimeline =new Timeline(new KeyFrame(Duration.millis(3200),e->{
+            shoot_the_pea(col,row);
+        }));
+        shootPeatimeline.setCycleCount(Timeline.INDEFINITE);
+        shootPeatimeline.play();
     }
-
-    public void shoot_the_pea(ImageView pea){
+    public void shoot_the_pea(int col, int row){
+        Pea bullet = new Pea(1);
+        ImageView shoot=new ImageView(pea);
+        bullet.setMyImage(shoot);
+        backyardGrid.add(shoot,col,row);
+        ImageView pea = new ImageView();
+        pea = bullet.getMyImage();
         TranslateTransition t = new TranslateTransition();
         t.setByX(600);
-        t.setDuration(Duration.millis(2000));
         t.setNode(pea);
+        pea.setVisible(true);
+        t.setDuration(Duration.millis(3200));
+        if(!levelZombies.isEmpty()) {
+            for (Zombie z : levelZombies) {
+                ImageView finalPea = pea;
+                finalPea.toFront();
+                pea.translateXProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (finalPea.getBoundsInParent().intersects(z.getMyImage().getBoundsInParent())) {
+                            finalPea.toFront();
+                            finalPea.setVisible(false);
+                            z.setHP(z.getHP()-bullet.getPower());
+                            System.out.println(z.getHP());
+                            if(z.getHP()<=0){
+                                backyardGrid.getChildren().remove(z.getMyImage());
+                            }
+                        }
+
+                    }
+                });
+            }
+        }
         t.setCycleCount(Timeline.INDEFINITE);
         t.play();
 

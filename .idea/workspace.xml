@@ -5,12 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/BasicZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/BasicZombie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/BombPlants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/BombPlants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/BucketHeadZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/BucketHeadZombie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/BucketHeadZombie.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Builder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/CherryBomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/CherryBomb.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/ConeHeadZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/ConeHeadZombie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/CreatureFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/CreatureFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/FlagZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/FlagZombie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/FlagZombie.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Grave.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Grave.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Lane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Lane.class" afterDir="false" />
@@ -19,7 +19,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Peashooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Peashooter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/PoleVaultingZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/PoleVaultingZombie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Repeater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Repeater.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Shooter$Pea.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Shooter$Pea.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Shooter$Pea.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Shooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Shooter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Shovel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/Shovel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/plantsVzombies/sample/SubGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plantsVzombies/sample/SubGame.class" afterDir="false" />
@@ -131,6 +131,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -235,7 +236,7 @@
       <workItem from="1572647229936" duration="41175000" />
       <workItem from="1573039041285" duration="411000" />
       <workItem from="1574670290864" duration="26791000" />
-      <workItem from="1575019249190" duration="51498000" />
+      <workItem from="1575019249190" duration="67703000" />
     </task>
     <servers />
   </component>

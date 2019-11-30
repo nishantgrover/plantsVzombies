@@ -36,6 +36,7 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="35.0" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="35.0" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="35.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="35.0" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
@@ -133,30 +134,15 @@
             <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="8" />
             <StackPane onMouseClicked="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="8" />
             <StackPane onMouseReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ImageView fx:id="z1" fitHeight="67.0" fitWidth="38.0" GridPane.columnIndex="11" GridPane.rowIndex="5">
-               <image>
-                  <Image url="@imgs/Conehead_Zombie.gif" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="z2" fitHeight="59.0" fitWidth="35.0" GridPane.columnIndex="11" GridPane.rowIndex="6">
-               <image>
-                  <Image url="@imgs/normal_zombie.gif" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="z3" fitHeight="59.0" fitWidth="36.0" GridPane.columnIndex="11" GridPane.rowIndex="7">
-               <image>
-                  <Image url="@imgs/normal_zombie.gif" />
-               </image>
-            </ImageView>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="7" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="7" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="16" GridPane.rowIndex="7" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="8" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="8" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="8" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="8" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="8" />
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.rowIndex="8" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="16" GridPane.rowIndex="8" />
             <StackPane onMouseClicked="#setOnGrid" onMouseDragReleased="#setOnGrid" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <ImageView fx:id="suntoken1" fitHeight="31.0" fitWidth="35.0" GridPane.columnIndex="7">
                <image>
@@ -232,6 +218,21 @@
       <ImageView fitHeight="38.0" fitWidth="35.0" layoutX="386.0" layoutY="342.0" onMouseClicked="#shovelClick">
          <image>
             <Image url="@imgs/shovel.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="z1" fitHeight="67.0" fitWidth="38.0" layoutX="804.0" layoutY="-138.0">
+         <image>
+            <Image url="@imgs/Conehead_Zombie.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="z2" fitHeight="59.0" fitWidth="35.0" layoutX="856.0" layoutY="-136.0">
+         <image>
+            <Image url="@imgs/normal_zombie.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="z3" fitHeight="59.0" fitWidth="36.0" layoutX="820.0" layoutY="-172.0">
+         <image>
+            <Image url="@imgs/normal_zombie.gif" />
          </image>
       </ImageView>
    </children>

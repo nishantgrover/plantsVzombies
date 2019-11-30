@@ -5,7 +5,9 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -21,9 +23,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
+import sun.reflect.generics.scope.DummyScope;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -56,31 +60,24 @@ public class lvl1GameController implements Initializable {
     public TextField sunTokenCounter;
     @FXML
     public void placeZombies(int n){
-        for(int i=0;i<n;i++) {
             int RnG = 1 + new Random().nextInt(2);
             Zombie madeZombie = new Zombie();
-            Zombie.addZombie(madeZombie);
             String selectZombie = new Integer(RnG).toString();
             madeZombie = (Zombie) ZombieFactory.getInstance().createCreature(selectZombie);
             int row = new Random().nextInt(5) + 4;
-            int col = new Random().nextInt(5) + 11;
-            ImageView ZombiePlace = new ImageView();
-            ZombiePlace = madeZombie.getMyImage();
+            int col = 12;
             madeZombie.resetXY();
+            Zombie.getAllZombies().add(madeZombie);
             if (selectZombie.equals("1")) {
-                ZombiePlace.setFitWidth(z2.getFitWidth());
-                ZombiePlace.setFitHeight(z2.getFitHeight());
-            } else if (selectZombie.equals("2")) {
-                ZombiePlace.setFitWidth(z1.getFitWidth());
-                ZombiePlace.setFitHeight(z1.getFitHeight());
+                madeZombie.getMyImage().setFitWidth(z2.getFitWidth());
+                madeZombie.getMyImage().setFitHeight(z2.getFitHeight());
             }
-            backyardGrid.add(ZombiePlace, col, row);
-        }
-//        Timeline timeline=new Timeline();
-//        timeline.getKeyFrames().addAll(new KeyFrame(Duration.ZERO, new KeyValue(ZombiePlace.translateXProperty(),0)), new KeyFrame(Duration.seconds(30/madeZombie.getSpeed()), new KeyValue(ZombiePlace.translateXProperty(),-1*(150 + new Random().nextInt(200)))));
-//        timeline.setCycleCount(Animation.INDEFINITE);
-//        timeline.pause();
-//        timeline.play();
+            else if (selectZombie.equals("2")) {
+                madeZombie.getMyImage().setFitWidth(z1.getFitWidth());
+                madeZombie.getMyImage().setFitHeight(z1.getFitHeight());
+            }
+            backyardGrid.add(madeZombie.getMyImage(), col, row);
+            moveZombie(madeZombie.getMyImage());
     }
     @FXML
     public void peashooterClick(){
@@ -141,7 +138,6 @@ public class lvl1GameController implements Initializable {
         moveZombie(z2);
         moveZombie(z3);
         movePBar();
-        placeZombies(10);
         backyardGrid.toFront();
         menu.toFront();
         Timer timer = new Timer();
@@ -167,13 +163,16 @@ public class lvl1GameController implements Initializable {
                 });
             }
         }, 0, 10000);
-
+        Timeline t1 = new Timeline(new KeyFrame(Duration.seconds(7), e->placeZombies(10)));
+        t1.setCycleCount(10);
+        t1.play();
     }
 
     public void moveZombie(ImageView Z){
         TranslateTransition t = new TranslateTransition();
-        t.setByX(-400);
-        t.setDuration(Duration.millis(65000));
+
+        t.setByX(-425);
+        t.setDuration(Duration.millis(5000));
         t.setNode(Z);
         t.play();
 
@@ -274,8 +273,6 @@ public class lvl1GameController implements Initializable {
     }
     @FXML
     public ImageView suntoken1;
-    @FXML
-    public ImageView suntoken2;
     @FXML
     public void setOnGrid(MouseEvent m){
         StackPane s = (StackPane) m.getSource();

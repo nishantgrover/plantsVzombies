@@ -187,7 +187,7 @@ class Zombie extends Creature implements damagable, Serializable{
     private final int myGrunt;
     private final double atkpwr;
     private ImageView myImage;
-    private static Timeline zombieTimeline;
+    private Timeline zombieTimeline;
     private static ArrayList<Zombie> allZombies;
     private double x;
     private double y;
@@ -230,11 +230,17 @@ class Zombie extends Creature implements damagable, Serializable{
         zombieTimeline=new Timeline();
         allZombies = new ArrayList<Zombie>();
     }
+    public static ArrayList<Zombie> getAllZombies(){
+        return allZombies;
+    }
     public static void addZombie(Zombie z){
         allZombies.add(z);
     }
     public Timeline getTimeline(){
         return zombieTimeline;
+    }
+    public void setZombieTimeline(Timeline Zt){
+        this.zombieTimeline=Zt;
     }
     @Override
     public void damaged(double value) {

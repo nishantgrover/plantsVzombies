@@ -1,4 +1,8 @@
 package sample;
+import javafx.animation.Timeline;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -7,6 +11,11 @@ interface damagable{
 }
 interface attacker{
     public double attack();
+}
+abstract class Creature{
+    public abstract void attack();
+    public abstract void damage();
+    public abstract ImageView getMyImage();
 }
 class HitException extends Exception{
 
@@ -169,7 +178,7 @@ abstract class Plant implements damagable, Serializable{
     abstract public void specialAbility();
 }
 
-abstract class Zombie implements damagable, attacker, Serializable{
+class Zombie extends Creature implements damagable, Serializable{
     private double HP;
     private final double maxHP;
     private final String toughness;
@@ -177,9 +186,16 @@ abstract class Zombie implements damagable, attacker, Serializable{
     private int damageAbsorption;
     private final int myGrunt;
     private final double atkpwr;
+    private ImageView myImage;
+    private static Timeline zombieTimeline;
+    private static ArrayList<Zombie> allZombies;
+    private double x;
+    private double y;
     public Zombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
                   double atkpwr) {
         super();
+        zombieTimeline=new Timeline();
+        allZombies = new ArrayList<Zombie>();
         HP = hP;
         this.maxHP = maxHP;
         this.toughness = toughness;
@@ -188,7 +204,38 @@ abstract class Zombie implements damagable, attacker, Serializable{
         this.myGrunt = myGrunt;
         this.atkpwr = atkpwr;
     }
+    public void setX(double x){
+        this.x = x;
+    }
 
+    public void setY(double y){
+        this.x = y;
+    }
+    public double getX(){
+        return x;
+    }
+    public double getY(){
+        return y;
+    }
+    public void resetXY(){
+        this.x=myImage.getX();
+        this.y=myImage.getY();
+    }
+    public Zombie() {
+        maxHP=100;
+        toughness="";
+        speed=10;
+        myGrunt=0;
+        atkpwr=0;
+        zombieTimeline=new Timeline();
+        allZombies = new ArrayList<Zombie>();
+    }
+    public static void addZombie(Zombie z){
+        allZombies.add(z);
+    }
+    public Timeline getTimeline(){
+        return zombieTimeline;
+    }
     @Override
     public void damaged(double value) {
 
@@ -197,10 +244,8 @@ abstract class Zombie implements damagable, attacker, Serializable{
     public String toString() {
         return "";
     }
-    abstract public void ability();
-    @Override
-    public double attack() {
-        return 1;
+    public void ability(){
+
     }
 
     public double getHP() {
@@ -230,6 +275,23 @@ abstract class Zombie implements damagable, attacker, Serializable{
     public double getAtkpwr() {
         return atkpwr;
     }
+    public void setImage(String url){
+        myImage=new ImageView(new Image(url));
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void damage() {
+
+    }
+
+    public ImageView getMyImage(){
+        return myImage;
+    }
 
 }
 
@@ -238,16 +300,23 @@ class BasicZombie extends Zombie implements Serializable{
     public BasicZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
                        double atkpwr) {
         super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
-        // TODO Auto-generated constructor stub
+        this.setImage("sample/imgs/normal_zombie.gif");
     }
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override
     public void ability() {
+
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void damage() {
 
     }
 
@@ -258,16 +327,24 @@ class BucketHeadZombie extends Zombie implements Serializable{
     public BucketHeadZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
                             double atkpwr) {
         super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
-        // TODO Auto-generated constructor stub
+
     }
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
 
     @Override
     public void ability() {
+
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void damage() {
 
     }
 
@@ -277,16 +354,23 @@ class ConeHeadZombie extends Zombie implements Serializable{
     public ConeHeadZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
                           double atkpwr) {
         super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
-        // TODO Auto-generated constructor stub
+        this.setImage("sample/imgs/Conehead_Zombie.gif");
     }
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override
     public void ability() {
+
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void damage() {
 
     }
 
@@ -296,16 +380,22 @@ class FlagZombie extends Zombie implements Serializable{
     public FlagZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
                       double atkpwr) {
         super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
-        // TODO Auto-generated constructor stub
     }
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override
     public void ability() {
+
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void damage() {
 
     }
 
@@ -315,16 +405,22 @@ class PoleVaultingZombie extends Zombie implements Serializable{
     public PoleVaultingZombie(double hP, double maxHP, String toughness, float speed, int damageAbsorption, int myGrunt,
                               double atkpwr) {
         super(hP, maxHP, toughness, speed, damageAbsorption, myGrunt, atkpwr);
-        // TODO Auto-generated constructor stub
     }
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Override
     public void ability() {
+
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void damage() {
 
     }
 
@@ -613,6 +709,36 @@ class Shovel implements Serializable{
 
     }
 }
+abstract class CreatureFactory{
+    public abstract Creature createCreature(String need);
+}
+class ZombieFactory extends CreatureFactory{
+    private static ZombieFactory Zf = new ZombieFactory();
+    private ZombieFactory(){
+    }
+    public static ZombieFactory getInstance(){
+        return Zf;
+    }
+    @Override
+    public Creature createCreature(String need) {
+        if(need.equals("1")){
+            return new BasicZombie(100,100,"low",1,35,1,15);
+        }
+        else if(need.equals("2")){
+            return new ConeHeadZombie(150,150,"medium",1.5f,30,2,20);
+        }
+        else if(need.equals("3")){
+            return new BucketHeadZombie(200,200,"medium",1.5f,30,3,25);
+        }
+        else if(need.equals("4")){
+            return new FlagZombie(250,250,"high",2f,25,4,30);
+        }
+        else if(need.equals("5")){
+            return new PoleVaultingZombie(250,250,"high",2.5f,25,5,30);
+        }
+        return null;
+    }
+}
 class SubGame implements Serializable{
     private final int level;
     private final Plant[] plantsSelected;
@@ -646,6 +772,7 @@ class Game implements Serializable{
     private Player CurrentUser;
     private boolean isSaved;
     private SubGame CurrentSubGame;
+
     private int availableLevels;
     private int volume;
     private static int userKeyHandler;

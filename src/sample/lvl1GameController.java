@@ -29,6 +29,8 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static sample.Zombie.*;
+
 
 public class lvl1GameController implements Initializable {
     private static int x=0;
@@ -52,7 +54,34 @@ public class lvl1GameController implements Initializable {
     public ImageView z3;
     @FXML
     public TextField sunTokenCounter;
-
+    @FXML
+    public void placeZombies(int n){
+        for(int i=0;i<n;i++) {
+            int RnG = 1 + new Random().nextInt(2);
+            Zombie madeZombie = new Zombie();
+            Zombie.addZombie(madeZombie);
+            String selectZombie = new Integer(RnG).toString();
+            madeZombie = (Zombie) ZombieFactory.getInstance().createCreature(selectZombie);
+            int row = new Random().nextInt(5) + 4;
+            int col = new Random().nextInt(5) + 11;
+            ImageView ZombiePlace = new ImageView();
+            ZombiePlace = madeZombie.getMyImage();
+            madeZombie.resetXY();
+            if (selectZombie.equals("1")) {
+                ZombiePlace.setFitWidth(z2.getFitWidth());
+                ZombiePlace.setFitHeight(z2.getFitHeight());
+            } else if (selectZombie.equals("2")) {
+                ZombiePlace.setFitWidth(z1.getFitWidth());
+                ZombiePlace.setFitHeight(z1.getFitHeight());
+            }
+            backyardGrid.add(ZombiePlace, col, row);
+        }
+//        Timeline timeline=new Timeline();
+//        timeline.getKeyFrames().addAll(new KeyFrame(Duration.ZERO, new KeyValue(ZombiePlace.translateXProperty(),0)), new KeyFrame(Duration.seconds(30/madeZombie.getSpeed()), new KeyValue(ZombiePlace.translateXProperty(),-1*(150 + new Random().nextInt(200)))));
+//        timeline.setCycleCount(Animation.INDEFINITE);
+//        timeline.pause();
+//        timeline.play();
+    }
     @FXML
     public void peashooterClick(){
         x=2;
@@ -112,6 +141,7 @@ public class lvl1GameController implements Initializable {
         moveZombie(z2);
         moveZombie(z3);
         movePBar();
+        placeZombies(10);
         backyardGrid.toFront();
         menu.toFront();
         Timer timer = new Timer();
@@ -137,6 +167,7 @@ public class lvl1GameController implements Initializable {
                 });
             }
         }, 0, 10000);
+
     }
 
     public void moveZombie(ImageView Z){

@@ -18,8 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage=primaryStage;
-        this.primaryStage.initStyle(StageStyle.TRANSPARENT);
-//        loadOpeningScreen();
+//        this.primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(new Scene(loadOpeningScreen(), Color.TRANSPARENT));
         primaryStage.setTitle("PvZ");
         primaryStage.show();

@@ -156,6 +156,8 @@ public class lvl1GameController implements Initializable {
                             ImageView i1;
                             switch(x){
                                 case 2:Plant p = (Plant) PlantFactory.getInstance().createCreature("peashooter");
+                                    if(Integer.parseInt(sunTokenCounter.getText())>=100){
+                                        sunTokenCounter.setText(Integer.toString(Integer.parseInt(sunTokenCounter.getText())-100));
                                     p.setParent(s);
                                     i1=new ImageView(new Image("sample/imgs/pea_shooter.gif"));
                                     i1.setFitHeight(40);
@@ -167,19 +169,25 @@ public class lvl1GameController implements Initializable {
                                     i1.toFront();
 //                                    s.toFront();
                                     shootPea(col,row);
-                                    System.out.println("PLaced");
+                                    System.out.println("PLaced");}
                                     break;
                                 case 1:p = (Plant) PlantFactory.getInstance().createCreature("sunflower");
-                                    p.setParent(s);
+                                    if(Integer.parseInt(sunTokenCounter.getText())>=50)
+                                    {
+                                        sunTokenCounter.setText(Integer.toString(Integer.parseInt(sunTokenCounter.getText())-50));
+                                        p.setParent(s);
                                     i1=new ImageView(new Image("sample/imgs/sun_flower.gif"));
                                     i1.setFitHeight(40);
                                     i1.setFitWidth(30);
                                     p.setImage(i1);
                                     s.getChildren().add(i1);
                                     produceSunToken(col,row);
-                                    levelPlants.add(p);
+                                    levelPlants.add(p);}
                                     break;
                                 case 4: p = (Plant) PlantFactory.getInstance().createCreature("wallnut");
+                                    if(Integer.parseInt(sunTokenCounter.getText())>=50)
+                                    {
+                                        sunTokenCounter.setText(Integer.toString(Integer.parseInt(sunTokenCounter.getText())-50));
                                     p.setParent(s);
                                     System.out.println("wallnut placed");
                                     i1=new ImageView(new Image("sample/imgs/lvl4.png"));
@@ -187,10 +195,13 @@ public class lvl1GameController implements Initializable {
                                     i1.setFitWidth(45);
                                     p.setImage(i1);
                                     s.getChildren().add(i1);
-                                    levelPlants.add(p);
+                                    levelPlants.add(p);}
                                     break;
 
                                 case 3: p = (Plant) PlantFactory.getInstance().createCreature("cherrybomb");
+                                    if(Integer.parseInt(sunTokenCounter.getText())>=50)
+                                    {
+                                        sunTokenCounter.setText(Integer.toString(Integer.parseInt(sunTokenCounter.getText())-125));
                                     p.setParent(s);
                                     System.out.println("CBomb placed");
                                     i1=new ImageView(new Image("sample/imgs/anim_cherrybomb.gif"));
@@ -199,7 +210,7 @@ public class lvl1GameController implements Initializable {
                                     p.setImage(i1);
                                     s.getChildren().add(i1);
                                     levelPlants.add(p);
-                                    cherrybombBlast(i1);
+                                    cherrybombBlast(i1);}
                                     break;
                             }
                         }
@@ -475,7 +486,7 @@ public class lvl1GameController implements Initializable {
     public ImageView suntoken1;
 
     public void shootPea(int col, int row){
-        Timeline shootPeatimeline =new Timeline(new KeyFrame(Duration.millis(3200),e->{
+        Timeline shootPeatimeline =new Timeline(new KeyFrame(Duration.millis(4000),e->{
             shoot_the_pea(col,row);
         }));
         shootPeatimeline.setCycleCount(Timeline.INDEFINITE);
@@ -492,7 +503,7 @@ public class lvl1GameController implements Initializable {
         t.setByX(600);
         t.setNode(pea);
         pea.setVisible(true);
-        t.setDuration(Duration.millis(3200));
+        t.setDuration(Duration.millis(1000));
         if(!levelZombies.isEmpty()) {
             for (Zombie z : levelZombies) {
                 ImageView finalPea = pea;
@@ -514,7 +525,7 @@ public class lvl1GameController implements Initializable {
                 });
             }
         }
-        t.setCycleCount(Timeline.INDEFINITE);
+//        t.setCycleCount(Timeline.INDEFINITE);
         t.play();
 
     }

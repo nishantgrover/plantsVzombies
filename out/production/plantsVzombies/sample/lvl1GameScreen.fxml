@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.lvl1GameController">
@@ -50,49 +49,34 @@
             <RowConstraints maxHeight="44.000006103515624" minHeight="10.0" prefHeight="44.000006103515624" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="4">
-               <children>
-                  <ImageView fx:id="lawn_mower1" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower1Click">
-                     <image>
-                        <Image url="@imgs/lawn_mower.gif" />
-                     </image>
-                  </ImageView>
-               </children></StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="5">
-               <children>
-                  <ImageView fx:id="lawn_mower2" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower2Click">
-                     <image>
-                        <Image url="@imgs/lawn_mower.gif" />
-                     </image>
-                  </ImageView>
-               </children></StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="6">
-               <children>
-                  <ImageView fx:id="lawn_mower3" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower3Click">
-                     <image>
-                        <Image url="@imgs/lawn_mower.gif" />
-                     </image>
-                  </ImageView>
-               </children></StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="7">
-               <children>
-                  <ImageView fx:id="lawn_mower4" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower4Click">
-                     <image>
-                        <Image url="@imgs/lawn_mower.gif" />
-                     </image>
-                  </ImageView>
-               </children></StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="8">
-               <children>
-                  <ImageView fx:id="lawn_mower5" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower5Click">
-                     <image>
-                        <Image url="@imgs/lawn_mower.gif" />
-                     </image>
-                  </ImageView>
-               </children></StackPane>
+            <ImageView fx:id="lawn_mower2" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower2Click" GridPane.rowIndex="5">
+               <image>
+                  <Image url="@imgs/lawn_mower.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lawn_mower3" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower3Click" GridPane.rowIndex="6">
+               <image>
+                  <Image url="@imgs/lawn_mower.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lawn_mower4" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower4Click" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@imgs/lawn_mower.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lawn_mower5" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower5Click" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@imgs/lawn_mower.gif" />
+               </image>
+            </ImageView>
             <ImageView fx:id="suntoken1" fitHeight="31.0" fitWidth="35.0" GridPane.columnIndex="7">
                <image>
                   <Image url="@imgs/sun.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lawn_mower1" fitHeight="41.0" fitWidth="53.0" onMouseClicked="#LawnMower1Click" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@imgs/lawn_mower.gif" />
                </image>
             </ImageView>
          </children>

@@ -58,6 +58,7 @@ public class lvl1GameController implements Initializable {
     @FXML
     public TextField sunTokenCounter;
     public ArrayList<Zombie> levelZombies = new ArrayList<>();
+    public ArrayList<Plant> levelPlants = new ArrayList<>();
     @FXML
     public void placeZombies(int n){
             int RnG = 1 + new Random().nextInt(4);
@@ -84,6 +85,8 @@ public class lvl1GameController implements Initializable {
             if(RnG==4){
                 madeZombie.getMyImage().setFitHeight(madeZombie.getMyImage().getFitHeight() - 10);
             }
+            madeZombie.getMyImage().setFitHeight(madeZombie.getMyImage().getFitHeight() - 20);
+            madeZombie.getMyImage().setFitWidth(madeZombie.getMyImage().getFitWidth() - 20);
             backyardGrid.add(madeZombie.getMyImage(), col, row);
             moveZombie(madeZombie);
     }
@@ -149,12 +152,16 @@ public class lvl1GameController implements Initializable {
                 cell.setOnMouseClicked(event -> {
                         StackPane s = (StackPane) event.getSource();
                     System.out.println("dsabjdkas");
-                        if(x>=1 && x<=2 && s.getChildren().isEmpty()){
+                        if(s.getChildren().isEmpty()){
                             ImageView i1;
                             switch(x){
-                                case 2: i1=new ImageView(new Image("sample/imgs/pea_shooter.gif"));
+                                case 2:Plant p = (Plant) PlantFactory.getInstance().createCreature("peashooter");
+                                    p.setParent(s);
+                                    i1=new ImageView(new Image("sample/imgs/pea_shooter.gif"));
                                     i1.setFitHeight(40);
                                     i1.setFitWidth(30);
+                                    p.setImage(i1);
+                                    levelPlants.add(p);
                                     s.getChildren().add(i1);
                                     s.toFront();
                                     i1.toFront();
@@ -162,15 +169,40 @@ public class lvl1GameController implements Initializable {
                                     shootPea(col,row);
                                     System.out.println("PLaced");
                                     break;
-                                case 1: i1=new ImageView(new Image("sample/imgs/sun_flower.gif"));
+                                case 1:p = (Plant) PlantFactory.getInstance().createCreature("sunflower");
+                                    p.setParent(s);
+                                    i1=new ImageView(new Image("sample/imgs/sun_flower.gif"));
                                     i1.setFitHeight(40);
                                     i1.setFitWidth(30);
+                                    p.setImage(i1);
                                     s.getChildren().add(i1);
+                                    produceSunToken(col,row);
+                                    levelPlants.add(p);
+                                    break;
+                                case 4: p = (Plant) PlantFactory.getInstance().createCreature("wallnut");
+                                    p.setParent(s);
+                                    System.out.println("wallnut placed");
+                                    i1=new ImageView(new Image("sample/imgs/lvl4.png"));
+                                    i1.setFitHeight(50);
+                                    i1.setFitWidth(45);
+                                    p.setImage(i1);
+                                    s.getChildren().add(i1);
+                                    levelPlants.add(p);
                                     break;
 
+                                case 3: p = (Plant) PlantFactory.getInstance().createCreature("cherrybomb");
+                                    p.setParent(s);
+                                    System.out.println("CBomb placed");
+                                    i1=new ImageView(new Image("sample/imgs/cherrybmb.jpg"));
+                                    i1.setFitHeight(40);
+                                    i1.setFitWidth(30);
+                                    p.setImage(i1);
+                                    s.getChildren().add(i1);
+                                    levelPlants.add(p);
+                                    break;
                             }
                         }
-                        else if(x==5 && !(cell.getChildren().isEmpty())){
+                        else if(x==5 && !(s.getChildren().isEmpty())){
                             s.getChildren().removeAll();
                         }
 
@@ -178,6 +210,11 @@ public class lvl1GameController implements Initializable {
             }
         }
     }
+
+    private void produceSunToken(int col, int row) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
         addStackPanes();
@@ -214,7 +251,57 @@ public class lvl1GameController implements Initializable {
 
     public void moveZombie(Zombie Z){
         TranslateTransition t = new TranslateTransition();
-        t.setByX(-425);
+        t.setByX(-450);
+        System.out.println("Plant size : "+levelPlants.size());
+        if(!levelPlants.isEmpty()) {
+            for (Plant p : levelPlants) {
+                System.out.println("Plant size : "+levelPlants.size());
+                Z.getMyImage().translateXProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (p.getParent().getBoundsInParent().intersects(Z.getMyImage().getBoundsInParent())) {
+                            System.out.println("me here?");
+                            t.pause();
+                            Thread t2=new Thread(()->{
+                                while(p.getHP()>0) {
+                                    System.out.println(p.getHP());
+                                    p.setHP(p.getHP() - Z.getAtkpwr());
+                                    try {
+                                        Thread.sleep(2000);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                System.out.println(p.getHP());
+                                if(p.getHP()<=0){
+                                    Platform.runLater(()->{
+                                        p.getParent().getChildren().remove(p.getMyImage());
+                                        t.play();
+                                    });
+                                }
+                            });
+                            t2.start();
+                        }
+                        else if(Z.getMyImage().getBoundsInParent().intersects(lawn_mower1.getBoundsInParent())){
+                            System.out.println("lm1");
+                            LawnMower1Click();
+                        }
+                        else if(Z.getMyImage().getBoundsInParent().intersects(lawn_mower2.getBoundsInParent())){
+                            LawnMower2Click();
+                        }
+                        else if(Z.getMyImage().getBoundsInParent().intersects(lawn_mower3.getBoundsInParent())){
+                            LawnMower3Click();
+                        }
+                        else if(Z.getMyImage().getBoundsInParent().intersects(lawn_mower4.getBoundsInParent())){
+                            LawnMower4Click();
+                        }
+                        else if(Z.getMyImage().getBoundsInParent().intersects(lawn_mower5.getBoundsInParent())){
+                            LawnMower5Click();
+                        }
+                    }
+                });
+            }
+        }
         t.setDuration(Duration.millis(35000/Z.getSpeed()));
         t.setNode(Z.getMyImage());
         t.play();
@@ -261,6 +348,18 @@ public class lvl1GameController implements Initializable {
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
         t.setNode(lawn_mower1);
+        if(!levelZombies.isEmpty()) {
+            for (Zombie z : levelZombies) {
+                lawn_mower1.translateXProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (lawn_mower1.getBoundsInParent().intersects(z.getMyImage().getBoundsInParent())) {
+                            backyardGrid.getChildren().remove(z.getMyImage());
+                        }
+                    }
+                });
+            }
+        }
         t.play();
     }
     @FXML
@@ -269,6 +368,18 @@ public class lvl1GameController implements Initializable {
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
         t.setNode(lawn_mower2);
+        if(!levelZombies.isEmpty()) {
+            for (Zombie z : levelZombies) {
+                lawn_mower2.translateXProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (lawn_mower2.getBoundsInParent().intersects(z.getMyImage().getBoundsInParent())) {
+                            backyardGrid.getChildren().remove(z.getMyImage());
+                        }
+                    }
+                });
+            }
+        }
         t.play();
     }
     @FXML
@@ -277,17 +388,19 @@ public class lvl1GameController implements Initializable {
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
         t.setNode(lawn_mower3);
-        t.play();
-        int i=0;
-        while(i<1000){
-            int j=0;
-            i++;
-            while(j<100) {
-                System.out.println(z1.getX());
-                System.out.println(z1.getTranslateX());
-                j++;
+        if(!levelZombies.isEmpty()) {
+            for (Zombie z : levelZombies) {
+                lawn_mower3.translateXProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (lawn_mower3.getBoundsInParent().intersects(z.getMyImage().getBoundsInParent())) {
+                            backyardGrid.getChildren().remove(z.getMyImage());
+                        }
+                    }
+                });
             }
         }
+        t.play();
     }
     @FXML
     public void LawnMower4Click(){
@@ -295,17 +408,19 @@ public class lvl1GameController implements Initializable {
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
         t.setNode(lawn_mower4);
-        t.play();
-        int i=0;
-        while(i<1000){
-            int j=0;
-            i++;
-            while(j<100) {
-                System.out.println(z1.getX());
-                System.out.println(z1.getTranslateX());
-                j++;
+        if(!levelZombies.isEmpty()) {
+            for (Zombie z : levelZombies) {
+                lawn_mower4.translateXProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (lawn_mower4.getBoundsInParent().intersects(z.getMyImage().getBoundsInParent())) {
+                            backyardGrid.getChildren().remove(z.getMyImage());
+                        }
+                    }
+                });
             }
         }
+        t.play();
     }
     @FXML
     public void LawnMower5Click(){
@@ -313,6 +428,18 @@ public class lvl1GameController implements Initializable {
         t.setByX(700);
         t.setDuration(Duration.millis(5000));
         t.setNode(lawn_mower5);
+        if(!levelZombies.isEmpty()) {
+            for (Zombie z : levelZombies) {
+                lawn_mower5.translateXProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (lawn_mower5.getBoundsInParent().intersects(z.getMyImage().getBoundsInParent())) {
+                            backyardGrid.getChildren().remove(z.getMyImage());
+                        }
+                    }
+                });
+            }
+        }
         t.play();
     }
     @FXML
@@ -348,7 +475,7 @@ public class lvl1GameController implements Initializable {
                             finalPea.toFront();
                             finalPea.setVisible(false);
                             z.setHP(z.getHP()-bullet.getPower());
-                            System.out.println(z.getHP());
+                            System.out.println("Bullet Power"+bullet.getPower()+ " HP: "+z.getHP());
                             if(z.getHP()<=0){
                                 backyardGrid.getChildren().remove(z.getMyImage());
                             }

@@ -2,6 +2,7 @@ package sample;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -115,7 +116,7 @@ class Player implements Comparable<Player>, Serializable{
     }
 }
 
-abstract class Plant implements damagable, Serializable{
+abstract class Plant extends Creature implements damagable, Serializable{
     private final int myType;
     private double HP;
     private final int waitingTime;
@@ -124,6 +125,10 @@ abstract class Plant implements damagable, Serializable{
     private String name;
     private final int availableAtlevel;
     private final String myAbility;
+    private ImageView myImage;
+    private int x,y;
+    private StackPane parent;
+
     public Plant(int availableAtlevel, int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
         super();
         this.myType = myType;
@@ -134,12 +139,30 @@ abstract class Plant implements damagable, Serializable{
         this.maxHP = maxHP;
         this.name = name;
         this.availableAtlevel=availableAtlevel;
+        this.myImage=new ImageView();
+        this.parent=new StackPane();
     }
-
+    public void setMyImage(String url){
+        this.myImage=new ImageView(new Image(url));
+    }
+    public void setImage(ImageView img){
+        this.myImage=img;
+    }
+    public ImageView getMyImage(){
+        return this.myImage;
+    }
+    public void setHP(double hp){
+        this.HP=hp;
+    }
     public int getAvailableAtlevel() {
         return availableAtlevel;
     }
-
+    public StackPane getParent(){
+        return parent;
+    }
+    public void setParent(StackPane s){
+        parent=s;
+    }
     public double getMaxHP() {
         return maxHP;
     }
@@ -182,7 +205,7 @@ class Zombie extends Creature implements damagable, Serializable{
     private double HP;
     private final double maxHP;
     private final String toughness;
-    private final float speed;
+    private float speed;
     private int damageAbsorption;
     private final int myGrunt;
     private final double atkpwr;
@@ -436,7 +459,7 @@ class PoleVaultingZombie extends Zombie implements Serializable{
 
 }
 
-abstract class Shooter extends Plant implements attacker, Serializable{
+abstract class Shooter extends Plant implements Serializable{
     private int range;
     private Pea shot;
     private final ArrayList<Pea> shots;
@@ -453,8 +476,8 @@ abstract class Shooter extends Plant implements attacker, Serializable{
         return "";
     }
     @Override
-    public double attack() {
-        return 1;
+    public void attack() {
+        return ;
     }
     abstract public void shoot();
 
@@ -502,6 +525,7 @@ class Peashooter extends Shooter implements Serializable{
     public Peashooter(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name,
                       int range) {
         super(myType, hP, waitingTime, cost, myAbility, maxHP, name, range);
+        this.setMyImage("sample/imgs/pea_shooter.gif");
     }
 
     @Override
@@ -519,6 +543,10 @@ class Peashooter extends Shooter implements Serializable{
         return myAbility;
     }
 
+    @Override
+    public void damage() {
+
+    }
 }
 class Repeater extends Shooter implements Serializable{
     private static double cost;
@@ -540,6 +568,10 @@ class Repeater extends Shooter implements Serializable{
 
     }
 
+    @Override
+    public void damage() {
+
+    }
 }
 class Threepeater extends Shooter implements Serializable{
     private static double cost;
@@ -565,8 +597,13 @@ class Threepeater extends Shooter implements Serializable{
     public String toString() {
         return "";
     }
+
+    @Override
+    public void damage() {
+
+    }
 }
-abstract class Builder extends Plant implements attacker, Serializable{
+abstract class Builder extends Plant implements Serializable{
 
     public Builder(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
         super(myType, waitingTime, hP, waitingTime, cost, myAbility, maxHP, name);
@@ -588,11 +625,17 @@ class Wallnut extends Builder implements Serializable{
     private static final String myAbility="";
     public Wallnut(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
         super(myType, hP, waitingTime, cost, myAbility, maxHP, name);
+        this.setMyImage("sample/imgs/lvl4.png");
     }
 
     @Override
-    public double attack() {
-        return 0;
+    public void attack() {
+        return ;
+    }
+
+    @Override
+    public void damage() {
+
     }
 
 }
@@ -605,12 +648,17 @@ class Tallnut extends Builder implements Serializable{
     }
 
     @Override
-    public double attack() {
-        return 0;
+    public void attack() {
+        return ;
+    }
+
+    @Override
+    public void damage() {
+
     }
 
 }
-abstract class SunTokenProducer extends Plant implements attacker, Serializable{
+abstract class SunTokenProducer extends Plant implements Serializable{
 
     public SunTokenProducer(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
         super(myType, waitingTime, hP, waitingTime, cost, myAbility, maxHP, name);
@@ -632,11 +680,17 @@ class Sunflower extends SunTokenProducer implements Serializable{
     private static final String myAbility="";
     public Sunflower(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
         super(myType, hP, waitingTime, cost, myAbility, maxHP, name);
+        this.setMyImage("sample/imgs/sun_flower.gif");
     }
 
     @Override
-    public double attack() {
-        return 0;
+    public void attack() {
+        return ;
+    }
+
+    @Override
+    public void damage() {
+
     }
 }
 class Sunshroom extends SunTokenProducer implements Serializable{
@@ -648,11 +702,16 @@ class Sunshroom extends SunTokenProducer implements Serializable{
     }
 
     @Override
-    public double attack() {
-        return 0;
+    public void attack() {
+        return ;
+    }
+
+    @Override
+    public void damage() {
+
     }
 }
-abstract class BombPlants extends Plant implements attacker, Serializable{
+abstract class BombPlants extends Plant implements Serializable{
 
     public BombPlants(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
         super(myType, waitingTime, hP, waitingTime, cost, myAbility, maxHP, name);
@@ -666,7 +725,10 @@ abstract class BombPlants extends Plant implements attacker, Serializable{
     public void specialAbility() {
 
     }
+    @Override
+    public void attack(){
 
+    }
 }
 class CherryBomb extends BombPlants implements Serializable{
     private static double cost;
@@ -674,11 +736,17 @@ class CherryBomb extends BombPlants implements Serializable{
     private static final String myAbility="";
     public CherryBomb(int myType, double hP, int waitingTime, double cost, String myAbility, double maxHP, String name) {
         super(myType, hP, waitingTime, cost, myAbility, maxHP, name);
+        this.setMyImage("sample/imgs/cherrybmb.jpg");
     }
 
     @Override
-    public double attack() {
-        return 0;
+    public void attack() {
+        return ;
+    }
+
+    @Override
+    public void damage() {
+
     }
 }
 class LawnMower implements Serializable{
@@ -749,16 +817,40 @@ class ZombieFactory extends CreatureFactory{
     @Override
     public Creature createCreature(String need) {
         if(need.equals("1")){
-            return new BasicZombie(100,100,"low",1,35,1,15);
+            return new BasicZombie(100,100,"low",1,35,1,5);
         }
         else if(need.equals("2")){
-            return new ConeHeadZombie(150,150,"medium",1.2f,30,2,20);
+            return new ConeHeadZombie(150,150,"medium",1.2f,30,2,10);
         }
         else if(need.equals("3")){
-            return new FootballZombie(200,200,"medium",1.5f,30,3,25);
+            return new FootballZombie(200,200,"medium",1.5f,30,3,20);
         }
         else if(need.equals("4")){
-            return new SkateZombie(250,250,"high",1.8f,25,4,30);
+            return new SkateZombie(250,250,"high",1.8f,25,4,10);
+        }
+        return null;
+    }
+}
+class PlantFactory extends CreatureFactory{
+    private static PlantFactory Pf = new PlantFactory();
+    private PlantFactory(){
+    }
+    public static PlantFactory getInstance(){
+        return Pf;
+    }
+    @Override
+    public Creature createCreature(String need) {
+        if(need.equals("sunflower")){
+            return new Sunflower(1,120,5,50,"ProduceSun",120,"Sunflower");
+        }
+        else if(need.equals("peashooter")){
+            return new Peashooter(2,150,5,100,"Peashooter",150,"Peashooter",3);
+        }
+        else if(need.equals("wallnut")){
+            return new Wallnut(4,380,8,50,"Wallnut",350,"Wallnut");
+        }
+        else if(need.equals("cherrybomb")){
+            return new CherryBomb(3,200,12,125,"Bomb",200,"CherryBomb");
         }
         return null;
     }

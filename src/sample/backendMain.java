@@ -850,7 +850,7 @@ class PlantFactory extends CreatureFactory{
             return new Wallnut(4,380,8,50,"Wallnut",350,"Wallnut");
         }
         else if(need.equals("cherrybomb")){
-            return new CherryBomb(3,200,12,125,"Bomb",200,"CherryBomb");
+            return new CherryBomb(3,1,12,125,"Bomb",200,"CherryBomb");
         }
         return null;
     }

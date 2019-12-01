@@ -193,12 +193,13 @@ public class lvl1GameController implements Initializable {
                                 case 3: p = (Plant) PlantFactory.getInstance().createCreature("cherrybomb");
                                     p.setParent(s);
                                     System.out.println("CBomb placed");
-                                    i1=new ImageView(new Image("sample/imgs/cherrybmb.jpg"));
+                                    i1=new ImageView(new Image("sample/imgs/anim_cherrybomb.gif"));
                                     i1.setFitHeight(40);
                                     i1.setFitWidth(30);
                                     p.setImage(i1);
                                     s.getChildren().add(i1);
                                     levelPlants.add(p);
+                                    cherrybombBlast(i1);
                                     break;
                             }
                         }
@@ -210,7 +211,19 @@ public class lvl1GameController implements Initializable {
             }
         }
     }
-
+    private void cherrybombBlast(ImageView i1){
+        Timeline t = new Timeline(new KeyFrame(Duration.seconds(1)));
+        t.setOnFinished(event -> {
+            double refX = i1.getLayoutX();
+            double refY = i1.getLayoutY();
+            for(Zombie z: levelZombies){
+                if(Math.abs(z.getMyImage().getLayoutX()-refX)>=0 && Math.abs(z.getMyImage().getLayoutY()-refY)>=0){
+                    backyardGrid.getChildren().remove(z);
+                }
+            }
+        });
+        t.play();
+    }
     private void produceSunToken(int col, int row) {
         Timeline produceSunTimeline =new Timeline(new KeyFrame(Duration.millis(10000),e->{
             produce_the_sun(col,row);

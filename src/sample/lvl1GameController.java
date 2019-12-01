@@ -284,7 +284,7 @@ public class lvl1GameController implements Initializable {
                 });
             }
         }, 0, 10000);
-        Timeline t1 = new Timeline(new KeyFrame(Duration.seconds(7), e->placeZombies(10)));
+        Timeline t1 = new Timeline(new KeyFrame(Duration.seconds(15), e->placeZombies(10)));
         t1.setCycleCount(10);
         t1.play();
     }
@@ -351,7 +351,7 @@ public class lvl1GameController implements Initializable {
     public void movePBar(){
         TranslateTransition t = new TranslateTransition();
         t.setByX(-123);
-        t.setDuration(Duration.millis(68000));
+        t.setDuration(Duration.millis(180000));
         t.setNode(pbar);
         t.play();
     }

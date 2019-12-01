@@ -212,7 +212,23 @@ public class lvl1GameController implements Initializable {
     }
 
     private void produceSunToken(int col, int row) {
+        Timeline produceSunTimeline =new Timeline(new KeyFrame(Duration.millis(10000),e->{
+            produce_the_sun(col,row);
+        }));
+        produceSunTimeline.setCycleCount(Timeline.INDEFINITE);
+        produceSunTimeline.play();
+    }
 
+    private void produce_the_sun(int col, int row) {
+        ImageView sunDefault = new ImageView(new Image("sample/imgs/sun.gif"));
+        sunDefault.setFitHeight(suntoken1.getFitHeight());
+        sunDefault.setFitWidth(suntoken1.getFitWidth());
+        backyardGrid.add(sunDefault,col,row);
+        sunDefault.setOnMouseClicked((Event e)-> {
+            sunDefault.setOpacity(0);
+            backyardGrid.getChildren().remove(sunDefault);
+            sunTokenCounter.setText(Integer.toString(Integer.parseInt(sunTokenCounter.getText())+25));
+        });
     }
 
     @Override
